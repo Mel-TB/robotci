@@ -2,22 +2,21 @@ version: 2.1
 jobs:
   bobby:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/node:latest
     steps:
       - checkout
-      - run: sudo apt-get install git ssh
-      - run: git clone git@github.com:Mel-TB/robotci.git
+      - run: npm install
+      - run: echo 'Hello'
 
   sally:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/node:latest
     steps:
       - checkout
       - run:
           command: |
             echo 'double trouble'
 workflows:
-  version: 2
   bobby_sally:
     jobs:
       - bobby
