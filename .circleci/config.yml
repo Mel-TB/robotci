@@ -16,17 +16,17 @@ jobs:
       - run: npm install
       - run: echo 'testing stuff '
       - run: npm test
-  dummytests:
+  dummytest:
     docker:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run: "echo 'Hello Test"
+      - run: "echo Hello"
 workflows:
   build_test_and_lint:
     jobs:
       - build
-      - dummytests
+      - dummytest
       - test:
           requires:
-            - dummytests
+            - dummytest
