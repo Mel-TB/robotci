@@ -5,7 +5,6 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run: npm install
       - run: echo 'Hello'
 
   sally:
@@ -13,9 +12,7 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run:
-          command: |
-            echo 'double trouble'
+      - run: echo 'double trouble'
 workflows:
   bobby_sally:
     jobs:
