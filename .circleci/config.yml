@@ -1,20 +1,32 @@
 version: 2.1
 jobs:
-  bobby:
+  build:
     docker:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run: echo 'Hello'
+      - run: npm install
+      - run: CI=true npm run build
 
-  sally:
+  test:
     docker:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run: echo 'double trouble Hello world '
+      - run: npm install
+      - run: echo 'testing stuff for try'
+      - run: npm run test
+  dummytest:
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run: "echo Hello"
 workflows:
-  bobby_sally:
+  build_test_and_lint:
     jobs:
-      - bobby
-      - sally
+      - build
+      - dummytest
+      - test:
+          requires:
+            - dummytest
