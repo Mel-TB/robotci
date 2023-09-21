@@ -12,7 +12,7 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run: echo 'double trouble'
+      - run: echo 'double trouble Hello world '
 workflows:
   bobby_sally:
     jobs:
